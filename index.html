@@ -54,22 +54,49 @@
     </nav>
 
     <div id="video_container" class="container">
-        <video id="video1" controls autoplay="true" >
-            <source src="http://nettuts.s3.amazonaws.com/763_sammyJSIntro/trailer_test.mp4" type="video/mp4">
-            Su navegador no soporta el componente para video.
-            <track label="Streaming en la Web" kind="subtitles" src="../Reproductor/img/test.vtt">
-        </video>
- 
-        <button class="btn btn-outline-dark" onclick="playPause()" title="Play/Pause">
-            <i class="bi bi-play-btn"></i></button>
-        <button class="btn btn-outline-dark" onclick="reload()" title="Recargar">
-            <i class="bi bi-arrow-clockwise"></i></button>
-        <button class="btn btn-outline-dark" onclick="stop()" title="Stop">
-            <i class="bi bi-stop-btn"></i></button>
-        <button class="btn btn-outline-dark" onclick="makeSmall()" title="Minimizar">Minimizar</button>
-        <button class="btn btn-outline-dark" onclick="makeNormal()" title="Maximizar">Normal</button>
-        <br><br><br>
+        <div class="row">
+            <div class="col-8">
+                <video id="video1" controls autoplay="true" poster="../Reproductor/img/cat.jpg" onloadedmetadata="showMetadata('video1')">
+                    <source src="http://nettuts.s3.amazonaws.com/763_sammyJSIntro/trailer_test.mp4" type="video/mp4">
+                    Su navegador no soporta el componente para video.
+                    <track label="Streaming en la Web" kind="subtitles" src="../Reproductor/img/test.vtt" srclang="en-us" label="English">
+                </video>
+        
+                <button class="btn btn-outline-dark" onclick="playPause()" title="Play">
+                    <i class="bi bi-play-btn"></i></i></button>
+                <button class="btn btn-outline-dark" onclick="pause()" title="Pause">
+                    <i class="bi bi-pause-btn"></i></button>
+                <button class="btn btn-outline-dark" onclick="reload()" title="Recargar">
+                    <i class="bi bi-arrow-clockwise"></i></button>
+                <button class="btn btn-outline-dark" onclick="stop()" title="Stop">
+                    <i class="bi bi-stop-btn"></i></button>
+                <button id="btnMute" class="btn btn-outline-dark" onclick="mutedVideo()" title="Silenciar">
+                    <i class="bi bi-mic-mute-fill"></i></button> 
+                <button class="btn btn-outline-dark" onclick="fastPlaySpeed()" title="x2">
+                    <i class="bi bi-chevron-double-right"></i>x2</button>
+                <button class="btn btn-outline-dark" onclick="slowPlaySpeed()" title="x1">
+                    <i class="bi bi-chevron-double-right"></i>x1</button>                   
+                <button class="btn btn-outline-dark" onclick="makeSmall()" title="Minimizar">
+                    <i class="bi bi-fullscreen-exit"></i></button>
+                <button class="btn btn-outline-dark" onclick="makeNormal()" title="Maximizar">
+                    <i class="bi bi-fullscreen"></i></button>
+                <button class="btn btn-outline-dark" id="playNext" onclick="switchVideos()" title="Sig Video"> 
+                    <i class="bi bi-arrow-right-square"></i></button>
+                <button class="btn btn-outline-dark" id="snapShot" onclick="takeSnapShot()" title="Capturar imagen"> 
+                    <i class="bi bi-camera"></i></button> 
+                <input id="volumen" type="range" />          
+            </div>
+            <div class="col-4">
+                <canvas id="frame" width="450" height="450"></canvas>
+                
+                <textarea id="text" rows="2" cols ="35">
+                    Información aquí
+                </textarea>
 
+                <h3>Atributos Valores</h3>
+                <p id="values"></p>
+            </div>
+        </div>
     </div>
 
 
